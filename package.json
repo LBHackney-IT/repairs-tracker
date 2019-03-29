@@ -1,5 +1,7 @@
 {
   "name": "repairs-tracker",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "govuk-frontend": "^2.9.0"
+  }
 }
