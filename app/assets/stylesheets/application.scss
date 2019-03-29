@@ -1,0 +1,132 @@
+$govuk-page-width: 1200px;
+$govuk-font-family: 'Arial', sans-serif;
+$govuk-breakpoints: (
+  mobile:  0px,
+  tablet:  0px,
+  desktop: 769px
+) !default;
+
+@import "govuk-frontend/all";
+@import "hackney_colour";
+@import "hackney_header";
+@import "hackney_button";
+@import "hackney_work_order";
+@import "hackney_note";
+@import "hackney_address_list";
+
+.hackney-template {
+  min-width: 1024px;
+}
+
+.hidden {
+  display: none;
+}
+
+.ajax-loading:after {
+  content: ' .';
+  animation: dots 1s steps(5, end) infinite;
+}
+
+.hackney-heading {
+  font-size: 30px;
+  line-height: 40px;
+  margin-top: 0;
+}
+
+.hackney-focus-colour:focus {
+  outline: 3px solid hackney-colour('housing-3');
+}
+
+@keyframes dots {
+  0%, 20% {
+    color: #009ca6;
+    text-shadow:
+      .25em 0 0 #009ca6,
+      .5em 0 0 #009ca6;
+    }
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 #009ca6,
+      .5em 0 0 #009ca6;
+    }
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 #009ca6;
+    }
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;
+    }
+  }
+
+.hackney-page-header {
+  background-color: govuk-colour("grey-4");
+  border-bottom: 1px solid govuk-colour("grey-2");
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.hackney-width-container {
+  @include govuk-media-query($from: tablet) {
+    margin: 0 30px;
+  }
+}
+
+.hackney-main-wrapper {
+  a {
+    color: hackney-colour('housing-2');
+    &:visited {
+      color: hackney-colour('housing-1');
+    }
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.hackney-flash-message {
+  @include govuk-font($size: 16);
+  background-color: hackney-colour("housing-2");
+  color: govuk-colour("grey-4");
+  margin-bottom: 10px;
+  padding: 10px 20px;
+}
+
+.hackney-note-info {
+  @include govuk-responsive-margin(2, "bottom");
+  color: $govuk-secondary-text-colour;
+}
+
+.hackney-appointment {
+  hr {
+    color: govuk-colour("grey-2");
+    width: 91%;
+    border: none;
+    height: 1px;
+    background-color: govuk-colour("grey-2");
+  }
+
+  table {
+    margin: 0 10px 15px 10px;
+    text-align: left;
+
+    th {
+      font-weight: normal;
+    }
+  }
+}
+
+// govuk styling specifies this as ems, and the other as pixels,
+// so need to overwrite it directly
+.govuk-width-container {
+  margin: 0 ($govuk-gutter / 6);
+}
+
+@media (min-width: 1260px) {
+  .govuk-width-container {
+    margin: 0 auto;
+  }
+}
