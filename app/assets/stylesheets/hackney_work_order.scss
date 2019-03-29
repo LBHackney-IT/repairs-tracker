@@ -1,0 +1,220 @@
+#work-order-heading-section {
+  padding-bottom: 30px;
+}
+
+.hackney-main-section-info {
+  background-color: govuk-colour('white');
+  padding: 2px;
+  .status-100 { // Collated
+    color: hackney-colour('status-planned');
+  }
+  .status-200 { // In Progress
+    color: hackney-colour('status-planned');
+  }
+  .status-300 { // Work Complete
+    color: hackney-colour('status-complete');
+  }
+  .status-350 { // Work Defective
+    color: hackney-colour('status-not-complete');
+  }
+  .status-400 { // Hold
+    color: hackney-colour('status-not-complete');
+  }
+  .status-425 { // Variation Outstanding
+    color: hackney-colour('status-not-complete');
+  }
+  .status-450 { // In Dispute
+    color: hackney-colour('status-not-complete');
+  }
+  .status-500 { // Approved for Statement
+    color: hackney-colour('status-complete');
+  }
+  .status-600 { // Statemented
+    color: hackney-colour('status-complete');
+  }
+  .status-700 { // Cancel Order
+    color: hackney-colour('status-not-complete');
+  }
+  .status-900 { // Complete
+    color: hackney-colour('status-complete');
+  }
+}
+.main-section-box {
+  min-height: 225px;
+}
+.hackney-main-section-info h5 {
+  color: $govuk-secondary-text-colour;
+  margin: 5px 10px;
+}
+.hackney-main-section-info p, ul {
+  color: hackney-colour('housing-2');
+  margin: 15px 10px;
+}
+.hackney-section-info-header {
+  color: darkgray;
+}
+.hackney-appointment-planned {
+  color: hackney-colour("housing-2");
+}
+.hackney-appointment-complete {
+  color: darkgray;
+}
+.hackney-appointment-not-complete {
+  color: crimson;
+}
+.hackney-work-order-references {
+  padding-bottom: 10px
+}
+.hackney-grid-column-one-half {
+  padding: 0 10px;
+}
+.hackney-grid-column-one-third {
+  padding: 0 10px;
+}
+.hackney-text-green {
+  color: hackney-colour("housing-2");
+}
+.hackney-body-m {
+  font-size: 22px;
+  line-height: 29px;
+}
+.hackney-body-s {
+  font-size: 19px;
+  line-height: 23px;
+}
+.hackney-body-xs {
+  font-size: 16px;
+  line-height: 20px;
+}
+.hackney-grid-row {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+.hackney-work-order-references > span {
+  margin-right: 10px;
+}
+.hackney-appointment-info {
+  color: $govuk-secondary-text-colour;
+
+  th {
+    width: 50px;
+  }
+}
+.hackney-work-order-priority {
+  color: crimson;
+}
+.hackney-work-order-date-raised {
+  text-align: left;
+
+  .work_order_date_created {
+    margin: 0;
+  }
+  .work_order_time_created {
+    color: $govuk-secondary-text-colour;
+    margin: 5px 0;
+  }
+}
+
+.hackney-work-order-related__flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hackney-work-order-related__property {
+  border: 1px solid $govuk-border-colour;
+  width: 390px;
+  padding: 0;
+  margin: -1px 0 0 -1px;
+
+  p {
+    color: $govuk-text-colour;
+    margin: 5px 0;
+  }
+
+  .address {
+    margin: 0 0 10px 0;
+    padding: 5px 10px;
+    background-color: govuk-colour('grey-4');
+  }
+
+  ul {
+    margin: 0;
+    padding: 5px 10px;
+    li {
+      list-style: none;
+      border-bottom: 1px solid $govuk-border-colour;
+      margin-bottom: 15px;
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}
+
+.repairs-history__years {
+  height: 150px;
+}
+
+.hackney-work-order-table {
+  tbody {
+    vertical-align: top;
+  }
+
+  p.address {
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
+
+  td {
+    white-space: nowrap;
+
+    &.description {
+      white-space: normal;
+      max-width: 400px;
+    }
+    .status {
+      color: govuk-colour('white');
+      padding: 4px 10px;
+      font-weight: bold;
+      display: inline-block;
+      width: 90%;
+      max-width: 150px;
+      text-align: center;
+    }
+    .status-100 { // Collated
+      background-color: hackney-colour('status-planned');
+    }
+    .status-200 { // In Progress
+      background-color: hackney-colour('status-planned');
+    }
+    .status-300 { // Work Complete
+      background-color: hackney-colour('status-complete');
+    }
+    .status-350 { // Work Defective
+      background-color: hackney-colour('status-not-complete');
+    }
+    .status-400 { // Hold
+      background-color: hackney-colour('status-not-complete');
+    }
+    .status-425 { // Variation Outstanding
+      background-color: hackney-colour('status-not-complete');
+    }
+    .status-450 { // In Dispute
+      background-color: hackney-colour('status-not-complete');
+    }
+    .status-500 { // Approved for Statement
+      background-color: hackney-colour('status-complete');
+    }
+    .status-600 { // Statemented
+      background-color: hackney-colour('status-complete');
+    }
+    .status-700 { // Cancel Order
+      background-color: hackney-colour('status-not-complete');
+    }
+    .status-900 { // Complete
+      background-color: hackney-colour('status-complete');
+    }
+  }
+}
