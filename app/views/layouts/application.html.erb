@@ -36,7 +36,7 @@
           <div class="govuk-grid-column-one-third hackney-header__links hackney-header__right_links">
             <% if action_name != "home" %>
               <%= link_to image_tag('govuk-icon-search-2x.png'), root_path, class: "hackney-header__right_links-image" %>
-              <%= link_to 'Search', root_path, class: "hackney-header__search" %>
+              <%= link_to 'Search', home_search_path, class: "hackney-header__search" %>
             <% end %>
           </div>
         </div>
@@ -63,7 +63,7 @@
       </div>
     <% end %>
 
-    <div class="govuk-width-container">
+    <div class="hackney-width-container-bottom">
       <div class="govuk-main-wrapper hackney-main-wrapper">
         <%= yield %>
       </div>

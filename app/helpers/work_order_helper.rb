@@ -58,14 +58,6 @@ module WorkOrderHelper
     end
   end
 
-  def format_appointment_date_short(appointment)
-    if appointment.begin_date.to_date ==  appointment.end_date.to_date
-      "#{appointment.begin_date.to_s(:govuk_date_time_short)}-#{appointment.end_date.to_s(:govuk_time)}"
-    else
-      "#{appointment.begin_date.to_s(:govuk_date_time_short)} to #{appointment.end_date.to_s(:govuk_date_time_short)}"
-    end
-  end
-
   def sort_appointments(appointments)
     appointments.sort_by{ |a| a.respond_to?(:logged_at) ? a.logged_at : a.begin_date }.reverse
   end
