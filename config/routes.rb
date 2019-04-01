@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :work_orders, only: [:show], param: :ref do
     post :search, on: :collection
   end
+
 end
