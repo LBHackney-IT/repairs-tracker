@@ -1,0 +1,26 @@
+<% content_for :page_header do %>
+  <div class="govuk-grid-row hackney-grid-row">
+    <div class="govuk-grid-column-two-thirds hackney-grid-column-one-half">
+      <h1 class="govuk-heading-l">
+        Repairs reference number: <%= work_order.reference %>
+      </h1>
+    </div>
+  </div>
+
+  <div class="govuk-grid-row" id="work-order-heading-section">
+    <div class="govuk-grid-column-one-third hackney-grid-column-one-third">
+      <div class="hackney-main-section-info main-section-box">
+        <p class="govuk-body-s hackney-body-s">
+          <span class="hackney-section-info-header govuk-body-xs hackney-body-xs">
+            <%= work_order.property.description %>
+          </span><br>
+          <% format_address(work_order.property.address).each do |line| %>
+            <span class="govuk-!-font-weight-bold"><%= line %></span><br />
+          <% end %>
+          <span class="govuk-body-xs hackney-text-green hackney-body-xs">
+            <%= work_order.property.postcode %>
+          </span>
+        </p>
+      </div>
+    </div>
+<% end %>

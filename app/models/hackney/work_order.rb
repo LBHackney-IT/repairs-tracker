@@ -65,15 +65,7 @@ class Hackney::WorkOrder
     @_property ||= Hackney::Property.find(prop_ref)
   end
 
-  def latest_appointment
-    @_latest_appointment ||= Hackney::Appointment.latest_for_work_order(reference)
-  end
-
   def appointments
     @_appointments ||= Hackney::Appointment.all_for_work_order(reference)
-  end
-
-  def notes
-    @_notes ||= Hackney::Note.for_work_order(reference)
   end
 end
