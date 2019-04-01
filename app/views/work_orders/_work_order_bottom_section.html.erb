@@ -1,0 +1,23 @@
+<div style="background:white; width: 100%">
+
+  <div class="hackney-note__header">
+    <h2 class='hackney-heading'>
+      Repair History
+    </h2>
+  </div>
+
+  <% if sort_appointments(@appointments).any? %>
+    <ul class="govuk-list hackney-note-timeline">
+    <% sort_appointments(@appointments).each do |appointment| %>
+      <li class="hackney-note" >
+        <p class="govuk-body">
+          <%= render 'appointment', appointment: appointment %>
+        </p>
+      </li>
+    <% end %>
+    </ul>
+  <% else %>
+    <p class="govuk-body-s">There are no notes or appointments for this work order.</p>
+  <% end %>
+
+</div>

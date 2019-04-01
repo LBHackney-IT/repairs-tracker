@@ -46,13 +46,6 @@ module HackneyAPI
       )
     end
 
-    def notes_feed(previous_note_id)
-      request(
-        http_method: :get,
-        endpoint: "#{API_VERSION}/notes/feed?startId=#{previous_note_id}&noteTarget=uhorder"
-      )
-    end
-
     def get_work_order_appointments(reference)
       request(
         http_method: :get,
@@ -73,122 +66,11 @@ module HackneyAPI
       end
     end
 
-    def get_work_order_notes(reference)
-      request(
-        http_method: :get,
-        endpoint: notes_endpoint(reference)
-      )
-    end
-
-    def post_work_order_note(work_order_reference, text)
-      value = request(
-        http_method: :post,
-        endpoint: "#{API_VERSION}/notes",
-        headers: {"Content-Type" => "application/json-patch+json"},
-        params: {
-          objectKey: "uhorder",
-          objectReference: work_order_reference,
-          text: text
-        }.to_json
-      )
-
-      key = "hackney-api-cache-#{notes_endpoint(work_order_reference)}"
-
-      API_REQUEST_CACHE.expire(key, 0)
-
-      value
-    end
-
-    def get_work_order_reports(reference)
-      request(
-        http_method: :get,
-        endpoint: "#{API_VERSION}/work_orders/#{reference}?include=mobilereports"
-      )
-    end
-
-    def get_work_orders_by_property(references:, date_from:, date_to:)
-      request(
-        http_method: :get,
-        endpoint: "#{API_VERSION}/work_orders",
-        params: {
-          propertyReference: references,
-          since: date_from.strftime("%d-%m-%Y"),
-          until: date_to.strftime("%d-%m-%Y")
-        }
-      )
-    rescue HackneyAPI::RepairsClient::RecordNotFoundError
-      [] # Handle the case when there are no work orders for a given property. Delete this once API is updated to handle the case
-    end
-
-    def get_repair_requests_by_property(reference)
-      request(
-        http_method: :get,
-        endpoint: "#{API_VERSION}/repairs?propertyReference=#{reference}"
-      )
-    end
-
-    def get_repair_request(reference)
-      request(
-        http_method: :get,
-        endpoint: "#{API_VERSION}/repairs/#{reference}"
-      )
-    end
-
     def get_property(reference)
       request(
         http_method: :get,
         endpoint: "#{API_VERSION}/properties/#{reference}"
       )
-    end
-
-    def get_properties_by_references(references)
-      request(
-        http_method: :get,
-        endpoint: "#{API_VERSION}/properties/by_references",
-        params: { reference: references }
-      )
-    end
-
-    def get_property_hierarchy(reference)
-      request(
-        http_method: :get,
-        endpoint: "#{API_VERSION}/properties/#{reference}/hierarchy"
-      )
-    end
-
-    def get_property_by_postcode(postcode, min_level=LEVEL_NON_DWELL, max_level=LEVEL_ESTATE)
-      request(
-        http_method: :get,
-        endpoint: "#{API_VERSION}/properties",
-        params: {
-          postcode: postcode,
-          min_level: min_level,
-          max_level: max_level
-        }
-      )
-    end
-
-    def get_property_by_address(address, min_level=LEVEL_NON_DWELL, max_level=LEVEL_ESTATE, limit:)
-      request(
-        http_method: :get,
-        endpoint: "#{API_VERSION}/properties/fladdress",
-        params: {
-          address: address,
-          limit: limit,
-          # FIXME: are those two used?
-          min_level: min_level,
-          max_level: max_level
-        }
-      )
-    end
-
-    def get_property_block_work_orders_by_trade(reference:, trade:, date_from:, date_to:)
-      request(
-        http_method: :get,
-        endpoint: "#{API_VERSION}/properties/#{reference}/block/work_orders?trade=#{trade}&since=#{date_from}&until=#{date_to}"
-      )
-    rescue HackneyAPI::RepairsClient::RecordNotFoundError
-      []
     end
 
     private
@@ -208,7 +90,7 @@ module HackneyAPI
         Rails.logger.error(e)
         raise
       end
-      
+
       case response.status
       when HTTP_STATUS_OK, HTTP_STATUS_NO_CONTENT
         response.body
