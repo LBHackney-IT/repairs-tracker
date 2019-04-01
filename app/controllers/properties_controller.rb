@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  include PropertyHelper
+
   rescue_from HackneyAPI::RepairsClient::RecordNotFoundError, with: :routing_error
 
   def show
