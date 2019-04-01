@@ -198,29 +198,30 @@ module HackneyAPI
     end
 
     def request(http_method:, endpoint:, cache_request: true, headers: {}, params: {})
-      caller = caller_locations.first.label
+      # caller = caller_locations.first.label
 
       response = begin
-        Appsignal.instrument("api.#{caller}") do
+        # Appsignal.instrument("api.#{caller}") do
           connection(cache_request: cache_request, headers: headers).public_send(http_method, endpoint, params)
-        end
+        # end
       rescue => e
         Rails.logger.error(e)
-        raise ApiError, [endpoint, params, e.message].join(', ')
+        raise
       end
-
+      
       case response.status
       when HTTP_STATUS_OK, HTTP_STATUS_NO_CONTENT
         response.body
       when HTTP_STATUS_NOT_FOUND
         raise RecordNotFoundError, [endpoint, params].join(', ')
       else
-        raise ApiError, [endpoint, params, response.status, response.body].join(', ')
+        Rails.logger.error(e)
+        #raise ApiError, [endpoint, params, response.status, response.body].join(', ')
       end
     end
 
     def connection(cache_request:, headers:)
-      Faraday.new(@base_url, request: { :params_encoder => Faraday::FlatParamsEncoder }, headers: {"x-api-key"=>"#{ENV['X_API_KEY']}"}.merge(headers)) do |faraday|
+       result = Faraday.new(@base_url, request: { :params_encoder => Faraday::FlatParamsEncoder }, headers: {"x-api-key"=>"#{ENV['X_API_KEY']}"}.merge(headers)) do |faraday|
         if cache_request
           faraday.use :manual_cache,
                       logger: Rails.logger,
