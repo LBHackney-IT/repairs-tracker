@@ -1,0 +1,59 @@
+.hackney-note {
+    border-bottom: 2px solid $govuk-border-colour;
+    margin-left: 2rem;
+    letter-spacing: 0.5px;
+    position: relative;
+
+    &:before, &:after {
+      position: absolute;
+      display: block;
+      top: 0;
+    }
+
+    &:after {
+      left: -48px;
+      background: govuk-colour("white");
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      z-index: 10;
+      content: "";
+      border: 4px solid govuk-colour("grey-1");
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border: none;
+    }
+}
+
+.hackney-note-timeline {
+  border-left: 4px solid govuk-colour("grey-1");
+}
+
+.hackney-appointment__tag {
+  color: govuk-colour('white');
+  padding: 4px 10px;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+}
+.hackney-appointment__tag-not-complete {
+  background-color: crimson;
+}
+.hackney-appointment__tag-complete {
+  background-color: govuk-colour('grey-2');
+}
+.hackney-appointment__tag-planned {
+  background-color: #009ca6;
+}
+
+.hackney-note__header {
+  padding-bottom: 30px;
+
+  h2 {
+    display: inline;
+    margin-right: 30px;
+  }
+}

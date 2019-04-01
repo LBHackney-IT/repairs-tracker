@@ -5,11 +5,77 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width">
+    <meta name="theme-color" content="#0b0c0c" />
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="/assets/images/govuk-mask-icon.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/govuk-apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/assets/images/govuk-apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/govuk-apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" href="/assets/images/govuk-apple-touch-icon.png">
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <meta property="og:image" content="/assets/images/govuk-opengraph-image.png">
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="govuk-template__body hackney-template">
+    <header class="hackney-header">
+      <div class="hackney-width-container">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <%= image_tag 'Hackney_Logo_White.png', class: "hackney-header__logo" %>
+            <%= link_to 'Repairs Tracker', root_path, class: "hackney-header__title" %>
+            <strong class="hackney_header__tag">beta</strong>
+          </div>
+          <div class="govuk-grid-column-one-third hackney-header__links hackney-header__right_links">
+            <% if action_name != "home" %>
+              <%= link_to image_tag('govuk-icon-search-2x.png'), root_path, class: "hackney-header__right_links-image" %>
+              <%= link_to 'Search', home_search_path, class: "hackney-header__search" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <% flash.each do |name, message| %>
+      <div class='hackney-flash-message'>
+        <div class="govuk-width-container">
+          <p><%= message %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <% if content_for :page_header %>
+      <div class="hackney-page-header">
+        <div class="govuk-width-container">
+          <div class="hackney-width-container">
+            <div class="govuk-main-wrapper ">
+              <%= yield :page_header %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="hackney-width-container-bottom">
+      <div class="govuk-main-wrapper hackney-main-wrapper">
+        <%= yield %>
+      </div>
+    </div>
+
+    <footer class="govuk-footer " role="contentinfo">
+      <div class="govuk-width-container ">
+      </div>
+    </footer>
+
+    <script>
+      window.GOVUKFrontend.initAll()
+    </script>
   </body>
 </html>

@@ -1,0 +1,70 @@
+#work-order-heading-section {
+  padding-bottom: 30px;
+}
+
+.hackney-main-section-info {
+  background-color: govuk-colour('white');
+  padding: 2px;
+}
+
+.main-section-box {
+  min-height: 150px;
+}
+
+.hackney-main-section-info p, ul {
+  color: hackney-colour('housing-2');
+  margin: 15px 10px;
+}
+.hackney-section-info-header {
+  color: darkgray;
+}
+.hackney-appointment-planned {
+  color: hackney-colour("housing-2");
+}
+.hackney-appointment-complete {
+  color: darkgray;
+}
+.hackney-appointment-not-complete {
+  color: crimson;
+}
+.hackney-work-order-references {
+  padding-bottom: 10px
+}
+.hackney-grid-column-one-half {
+  padding: 0 10px;
+}
+.hackney-grid-column-one-third {
+  padding: 0 10px;
+}
+.hackney-text-green {
+  color: hackney-colour("housing-2");
+}
+.hackney-body-m {
+  font-size: 22px;
+  line-height: 29px;
+}
+.hackney-body-s {
+  font-size: 19px;
+  line-height: 23px;
+}
+.hackney-body-xs {
+  font-size: 16px;
+  line-height: 20px;
+}
+.hackney-grid-row {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+.hackney-work-order-references > span {
+  margin-right: 10px;
+}
+.hackney-appointment-info {
+  color: $govuk-secondary-text-colour;
+
+  th {
+    width: 50px;
+  }
+}
+.hackney-work-order-priority {
+  color: crimson;
+}
