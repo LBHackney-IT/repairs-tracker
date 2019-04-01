@@ -1,7 +1,7 @@
 class WorkOrdersController < ApplicationController
   #rescue_from HackneyAPI::RepairsClient::RecordNotFoundError, with: :redirect_to_homepage
 
-  #helper WorkOrderHelper
+  helper WorkOrderHelper
 
   def search
     if reference.present?
@@ -18,6 +18,8 @@ class WorkOrdersController < ApplicationController
 
   def show
     @work_order = WorkOrderFacade.new(reference)
+
+    @appointments = get_appointments(Hackney::WorkOrder.find(reference))
   end
 
 private
@@ -37,5 +39,9 @@ private
 
   def is_work_order?(s)
     s[/\A\d{8}\z/]
+  end
+
+  def get_appointments(work_order)
+    work_order.appointments.nil? ? [] : work_order.appointments
   end
 end

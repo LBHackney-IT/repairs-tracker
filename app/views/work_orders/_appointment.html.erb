@@ -1,0 +1,8 @@
+<div class="hackney-note-info">
+  <%= format_appointment_date(appointment) %>
+</div>
+<span class="hackney-appointment__tag hackney-appointment__tag-<%= appointment_status_color(appointment.status, appointment.outcome) %>">Appointment: <%= appointment_status(appointment.status, appointment.outcome).capitalize %></span><br>
+Operative name: <%= appointment.assigned_worker %><br>
+Phone number: <%= appointment.phone_number %><br>
+Created: <%= appointment.reported_on&.to_s(:govuk_date_time) %><br>
+Data source: <%= appointment.source_system %>

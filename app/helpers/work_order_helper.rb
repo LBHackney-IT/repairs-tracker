@@ -1,4 +1,4 @@
-module WorkOrdersHelper
+module WorkOrderHelper
   def out_of_target?(work_order, appointment)
     return if appointment.blank?
     work_order.date_due < appointment.begin_date
@@ -58,25 +58,12 @@ module WorkOrdersHelper
     end
   end
 
-  def format_appointment_date_short(appointment)
-    if appointment.begin_date.to_date ==  appointment.end_date.to_date
-      "#{appointment.begin_date.to_s(:govuk_date_time_short)}-#{appointment.end_date.to_s(:govuk_time)}"
-    else
-      "#{appointment.begin_date.to_s(:govuk_date_time_short)} to #{appointment.end_date.to_s(:govuk_date_time_short)}"
-    end
-  end
-
-  def sort_notes_and_appointments(notes_and_appointments)
-    notes_and_appointments.sort_by{ |a| a.respond_to?(:logged_at) ? a.logged_at : a.begin_date }.reverse
+  def sort_appointments(appointments)
+    appointments.sort_by{ |a| a.respond_to?(:logged_at) ? a.logged_at : a.begin_date }.reverse
   end
 
   def format_address(address)
     address.split("  ")
-  end
-
-  def format_caller_name(name)
-    return "N/A" if (name.nil? || name.empty?)
-    name.downcase.gsub(/\b('?[a-z])/) { $1.capitalize }
   end
 
   def appointment_status(status, outcome)
