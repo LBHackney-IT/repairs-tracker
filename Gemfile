@@ -24,11 +24,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'faraday'
+gem 'faraday_middleware'
+gem 'faraday-manual-cache', github: 'dobs/faraday-manual-cache', branch: 'master'
+gem 'redis-activesupport'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -37,6 +36,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails"
+  gem 'dotenv-rails'
 end
 
 group :development do
